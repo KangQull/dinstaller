@@ -41,9 +41,9 @@ exit /b 2)
 net user Administrator $PASSADMIN
 
 
-netsh -c interface ip set address name="$IFACE" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
-netsh -c interface ip add dnsservers name="$IFACE" address=1.1.1.1 index=1 validate=no
-netsh -c interface ip add dnsservers name="$IFACE" address=8.8.4.4 index=2 validate=no
+netsh interface ip set address "Ethernet Instance 0 2" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
+netsh interface ip set address "Ethernet Instance 0 2" address=1.1.1.1 index=1 validate=no
+netsh interface ip set address "Ethernet Instance 0 2" address=8.8.4.4 index=2 validate=no
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
