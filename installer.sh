@@ -17,7 +17,7 @@ case "$PILIHOS" in
 	2) PILIHOS="https://files.sowan.my.id/windows2016.gz"  IFACE="Ethernet Instance 0 2";;
 	3) PILIHOS="https://files.sowan.my.id/windows2012.gz"  IFACE="Ethernet";;
 	4) PILIHOS="http://15.235.200.203/windows10inrdp.gz"  IFACE="Ethernet Instance 0 2";;
-	5) PILIHOS="https://files.sowan.my.id/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
+	5) PILIHOS="http://15.235.200.203/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
 	6) read -p "Masukkan Link GZ mu : " PILIHOS;;
 	*) echo "pilihan salah"; exit;;
 esac
@@ -42,8 +42,8 @@ net user Administrator $PASSADMIN
 
 
 netsh interface ip set address "Ethernet Instance 0 2" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
-netsh interface ip add dns "Ethernet Instance 0 2" addr=1.1.1.1 index=1
-netsh interface ip add dns "Ethernet Instance 0 2" addr=8.8.8.8 index=2
+netsh interface ip add dns "Ethernet Instance 0 2" addr=1.1.1.1 index=1 validate=no
+netsh interface ip add dns "Ethernet Instance 0 2" addr=8.8.8.8 index=2 validate=no
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
