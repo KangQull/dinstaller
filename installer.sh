@@ -42,8 +42,8 @@ net user Administrator $PASSADMIN
 
 
 netsh interface ip set address "Ethernet Instance 0 2" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
-netsh interface ip set address "Ethernet Instance 0 2" address=1.1.1.1 index=1 validate=no
-netsh interface ip set address "Ethernet Instance 0 2" address=8.8.4.4 index=2 validate=no
+netsh interface ip add dns "Ethernet Instance 0 2" addr=1.1.1.1 index=1
+netsh interface ip add dns "Ethernet Instance 0 2" addr=8.8.8.8 index=2
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
@@ -96,7 +96,6 @@ wget --no-check-certificate -O- $PILIHOS | gunzip | dd of=/dev/vda bs=3M status=
 mount.ntfs-3g /dev/vda2 /mnt
 cd "/mnt/ProgramData/Microsoft/Windows/Start Menu/Programs/"
 cd Start* || cd start*; \
-wget https://nixpoin.com/ChromeSetup.exe
 cp -f /tmp/net.bat net.bat
 cp -f /tmp/dpart.bat dpart.bat
 
