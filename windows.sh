@@ -41,9 +41,9 @@ exit /b 2)
 net user Admin $PASSADMIN
 
 
-netsh -c interface ip set address $IFACE static $IP4 mask=255.255.240.0 $GW
-netsh -c interface ip add dnsservers name="$IFACE" address=1.1.1.1
-netsh -c interface ip add dnsservers name="$IFACE" address=8.8.8.8
+netsh -c interface ip set address "$IFACE" static $IP4 mask=255.255.240.0 $GW
+netsh -c interface ip add dns "$IFACE" addr=1.1.1.1
+netsh -c interface ip add dns "$IFACE" addr=8.8.8.8
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
