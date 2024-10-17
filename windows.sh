@@ -38,12 +38,12 @@ echo CreateObject^("Shell.Application"^).ShellExecute "%~s0", "%*", "", "runas",
 "%temp%\Admin.vbs"
 del /f /q "%temp%\Admin.vbs"
 exit /b 2)
-net user Administrator $PASSADMIN
+net user Admin $PASSADMIN
 
 
-netsh -c interface ip set address name="$IFACE" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
-netsh -c interface ip add dnsservers name="$IFACE" address=1.1.1.1 index=1 validate=no
-netsh -c interface ip add dnsservers name="$IFACE" address=8.8.8.8 index=2 validate=no
+netsh -c interface ip set address $IFACE static $IP4 mask=255.255.240.0 $GW
+netsh -c interface ip add dnsservers name="$IFACE" address=1.1.1.1
+netsh -c interface ip add dnsservers name="$IFACE" address=8.8.8.8
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
@@ -98,6 +98,6 @@ cd Start* || cd start*; \
 cp -f /tmp/net.bat net.bat
 cp -f /tmp/dpart.bat dpart.bat
 
-echo 'Your server will turning off in 3 second'
-sleep 3
+echo 'Your server will turning off in 30 second'
+sleep 30
 poweroff
