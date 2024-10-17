@@ -38,7 +38,6 @@ echo CreateObject^("Shell.Application"^).ShellExecute "%~s0", "%*", "", "runas",
 "%temp%\Admin.vbs"
 del /f /q "%temp%\Admin.vbs"
 exit /b 2)
-net user Admin $PASSADMIN
 
 
 netsh -c interface ip set address "$IFACE" static $IP4 mask=255.255.240.0 $GW
@@ -99,5 +98,5 @@ cp -f /tmp/net.bat net.bat
 cp -f /tmp/dpart.bat dpart.bat
 
 echo 'Your server will turning off in 30 second'
-sleep 30
+sleep 40
 poweroff
