@@ -16,7 +16,7 @@ case "$PILIHOS" in
 	1|"") PILIHOS="https://files.sowan.my.id/windows2019.gz"  IFACE="Ethernet Instance 0 2";;
 	2) PILIHOS="https://files.sowan.my.id/windows2016.gz"  IFACE="Ethernet Instance 0 2";;
 	3) PILIHOS="https://files.sowan.my.id/windows2012.gz"  IFACE="Ethernet";;
-	4) PILIHOS="http://15.235.202.128/ilite10.gz"  IFACE="Ethernet Instance 0 2";;
+	4) PILIHOS="https://onboardcloud.dl.sourceforge.net/project/vlitee/windows10lite.gz"  IFACE="Ethernet Instance 0 2";;
 	5) PILIHOS="https://files.sowan.my.id/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
 	6) read -p "Masukkan Link GZ mu : " PILIHOS;;
 	*) echo "pilihan salah"; exit;;
@@ -40,7 +40,7 @@ del /f /q "%temp%\Admin.vbs"
 exit /b 2)
 
 
-netsh -c interface ip set address "$IFACE" static $IP4 mask=255.255.240.0 $GW
+netsh -c interface ip set address "$IFACE" static $IP4 255.255.240.0 $GW
 netsh -c interface ip add dns "$IFACE" addr=1.1.1.1
 netsh -c interface ip add dns "$IFACE" addr=8.8.8.8
 
@@ -53,7 +53,7 @@ EOF
 cat >/tmp/dpart.bat<<EOF
 @ECHO OFF
 echo JENDELA INI JANGAN DITUTUP
-echo SCRIPT INI AKAN MERUBAH PORT RDP MENJADI 5000, SETELAH RESTART UNTUK MENYAMBUNG KE RDP GUNAKAN ALAMAT $IP4:5000
+echo SCRIPT INI AKAN MERUBAH PORT RDP MENJADI 5000, SETELAH RESTART UNTUK MENYAMBUNG KE RDP GUNAKAN ALAMAT $IP4:3737
 echo KETIK YES LALU ENTER!
 
 cd.>%windir%\GetAdmin
